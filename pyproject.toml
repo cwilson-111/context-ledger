@@ -1,0 +1,67 @@
+[project]
+name = "context-ledger"
+version = "0.1.0"
+description = "Explain why a coding-agent session cost what it did: per-item lifetime cost attribution and waste diagnosis for omp and Claude Code logs."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Cole Wilson" }]
+requires-python = ">=3.11"
+# Deliberately no runtime dependencies: the tool reads private logs and must work offline.
+dependencies = []
+keywords = ["llm", "claude", "agents", "prompt-caching", "cost", "tokens"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development",
+]
+
+[project.urls]
+Repository = "https://github.com/cwilson-111/context-ledger"
+
+[project.scripts]
+context-ledger = "context_ledger.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+    "mypy>=1.13",
+]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+# Anaconda's python3.12 on this class of machine is x86_64 (Rosetta); use uv's native interpreters.
+python-preference = "only-managed"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/context_ledger"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "PL"]
+ignore = [
+    "PLR0913", # report builders legitimately take many knobs
+    "PLR2004", # thresholds are named where they matter; small literals are fine
+    "PLR0911",
+    "PLR0912",
+    "PLR0915",
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src", "tests", "scripts"]
+mypy_path = "src"

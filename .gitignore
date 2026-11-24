@@ -1,0 +1,21 @@
+# Real session logs and reports rendered from them never go in git.
+*.jsonl
+!tests/fixtures/**/*.jsonl
+reports/
+scratch/
+*.html
+!docs/*.html
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+.DS_Store
