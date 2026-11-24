@@ -11,14 +11,24 @@ requires-python = ">=3.11"
 dependencies = []
 keywords = ["llm", "claude", "agents", "prompt-caching", "cost", "tokens"]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development",
+    "Topic :: Utilities",
 ]
 
 [project.urls]
+Homepage = "https://github.com/cwilson-111/context-ledger"
 Repository = "https://github.com/cwilson-111/context-ledger"
+Issues = "https://github.com/cwilson-111/context-ledger/issues"
+Findings = "https://github.com/cwilson-111/context-ledger/blob/main/docs/FINDINGS.md"
 
 [project.scripts]
 context-ledger = "context_ledger.cli:main"

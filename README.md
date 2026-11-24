@@ -13,10 +13,10 @@ re-prices the session under "what if" policies.
 
 Everything runs locally, reads logs read-only, and never touches the network.
 
-![HTML report for a synthetic session](docs/demo-report.png)
+![HTML report for a synthetic session](https://raw.githubusercontent.com/cwilson-111/context-ledger/main/docs/demo-report.png)
 
-*Rendered from the synthetic session in [`tests/fixtures/demo`](tests/fixtures/demo); the
-full page is [`docs/demo-report.html`](docs/demo-report.html).*
+*Rendered from the synthetic session in [`tests/fixtures/demo`](https://github.com/cwilson-111/context-ledger/tree/main/tests/fixtures/demo); the
+full page is [`docs/demo-report.html`](https://github.com/cwilson-111/context-ledger/blob/main/docs/demo-report.html).*
 
 ## A worked example (synthetic)
 
@@ -57,9 +57,10 @@ context cost $0.09. None of this shows up in a token total.
 Python 3.11+, no runtime dependencies.
 
 ```sh
-uvx --from git+https://github.com/cwilson-111/context-ledger context-ledger summary ~/.omp/agent/sessions
-# or
-pipx install git+https://github.com/cwilson-111/context-ledger
+uvx context-ledger summary ~/.claude/projects      # Claude Code
+uvx context-ledger summary ~/.omp/agent/sessions   # omp
+# or install it
+pipx install context-ledger
 ```
 
 From a clone: `uv sync && uv run context-ledger --help`.
@@ -87,7 +88,7 @@ context-ledger summary ~/.claude/projects --json            # machine-readable
 
 `--prices` takes `{"model": {"input": 4, "output": 20, "cache_read": 0.2, "cache_write_1h": 8}}`
 (USD per million tokens) and only matters where a log has tokens but no recorded cost.
-The built-in table ([`pricing.py`](src/context_ledger/pricing.py)) was checked against costs
+The built-in table ([`pricing.py`](https://github.com/cwilson-111/context-ledger/blob/main/src/context_ledger/pricing.py)) was checked against costs
 the harnesses recorded themselves.
 
 ## How attribution works
@@ -115,7 +116,7 @@ the harnesses recorded themselves.
 
 ### Detectors
 
-Each is a small pure function in [`detectors.py`](src/context_ledger/detectors.py).
+Each is a small pure function in [`detectors.py`](https://github.com/cwilson-111/context-ledger/blob/main/src/context_ledger/detectors.py).
 
 | detector | fires when | cost reported |
 |---|---|---|
@@ -163,7 +164,7 @@ It does not try to replace ccusage's breadth of harnesses or time-range reports.
 ## Findings from real logs
 
 Run over 5,591 real omp requests ($574.55) and 35 Claude Code requests on the author's
-machine. All aggregates, in [docs/FINDINGS.md](docs/FINDINGS.md):
+machine. All aggregates, in [docs/FINDINGS.md](https://github.com/cwilson-111/context-ledger/blob/main/docs/FINDINGS.md):
 
 | | omp |
 |---|---:|
