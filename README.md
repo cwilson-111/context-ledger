@@ -1,9 +1,18 @@
 # context-ledger
 
+[![PyPI](https://img.shields.io/pypi/v/context-ledger)](https://pypi.org/project/context-ledger/)
+[![CI](https://github.com/cwilson-111/context-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/cwilson-111/context-ledger/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/pypi/pyversions/context-ledger)](https://pypi.org/project/context-ledger/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/cwilson-111/context-ledger/blob/main/LICENSE)
+
 Find out **why** a coding-agent session cost what it did, not just how much.
 
+```sh
+uvx context-ledger summary ~/.claude/projects
+```
+
 Coding agents resend the whole conversation on every request. With prompt caching, most of
-the bill is cache reads and cache writes of context the model has already seen. A 10,000-token
+the bill is cache reads and cache writes of context, not output. A 10,000-token
 tool output that stays in context for 200 more turns is billed 200 more times. context-ledger
 reads omp and Claude Code session logs and charges every piece of context (system prompt,
 user message, thinking block, tool call, tool result) its **lifetime cost**: what it cost to

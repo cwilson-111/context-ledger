@@ -45,7 +45,8 @@ the calibrated size of the neighbouring item.
 | output (incl. thinking) | 14.3% | 30.6% |
 | side calls (titles, cache warmers, probes) | 1.3% | n/a |
 
-So 84% of omp spend is re-sending context, not generating anything. The two Claude Code
+So 84% of omp spend is carrying context (cache reads plus cache writes, including each item's
+first write), not generating anything. The two Claude Code
 sessions are short (35 turns), so cache writes dominate.
 
 ### By item kind (lifetime cost: generating the item plus every later prompt it rode in)
